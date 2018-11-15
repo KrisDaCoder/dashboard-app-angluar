@@ -1,0 +1,21 @@
+<gridster [options]="options" *ngIf="!showGrid">
+    <gridster-item [item]="chart.coordinates" *ngFor="let chart of activeDashboard.charts; let i=index">
+    <!-- <gridster-item [item]="chart.coordinates" (mouseenter)="hoverOverGridsterItem(i)" (mouseleave)="leaveGridsteritem(i)" *ngFor="let chart of charts; let i=index"> -->
+        <div  class="item-container" fxLayout="column">
+            <!-- <button *ngIf="showButtons[i]" mat-icon-button color="primary" (click)="editChart(chart, i)">  -->
+            <div class="buttons-container" fxLayout="row">
+                <div fxFlex></div>
+                <button mat-icon-button color="primary" (click)="editChart(chart, i)" > 
+                    <mat-icon>create</mat-icon>
+                </button>           
+                <!-- <button *ngIf="showButtons[i]" mat-icon-button color="warn" (click)="deleteChart(i)"> -->
+                <button mat-icon-button color="warn" (click)="deleteChart(i)">
+                    <mat-icon>delete_forever</mat-icon>
+                </button>
+            </div>
+            <div class="chart-container" fxLayout="row">
+                <canvas [id]="chart.htmlId" flex></canvas>
+            </div>
+        </div>
+    </gridster-item>
+</gridster>

@@ -1,0 +1,55 @@
+<h2 mat-dialog-title fxLayoutAlign="center">Create Chart</h2>
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <div class="labels" fxLayout="column">
+      <mat-form-field>
+        <input type="text" matInput placeholder="Chart title" formControlName="chartTitle">
+        <mat-error *ngIf="chartTitle.touched && chartTitle.invalid">
+          <div *ngIf="chartTitle.errors.required">
+              Chart title is <strong>required</strong>
+          </div>
+        </mat-error> 
+      </mat-form-field>
+      <mat-form-field>
+        <input type="text" matInput placeholder="Chart label" formControlName="chartLabel">
+        <mat-error *ngIf="chartLabel.touched && chartLabel.invalid">
+          <div *ngIf="chartLabel.errors.required">
+              Chart label is <strong>required</strong>
+          </div>
+        </mat-error> 
+      </mat-form-field>
+    </div>
+    <div class="colors" fxLayout="row">
+      <div formArrayName="backgroundColors" fxLayout="column">
+        <mat-form-field *ngFor="let backgroundColor of form.get('backgroundColors').controls; let i = index;">
+          <input [colorPicker]="backgroundColor.value" [value]="backgroundColor.value" (colorPickerChange)="backgroundColor.setValue($event)" [placeholder]="backgroundColorsPlaceholder[i]" type="text" matInput [formControlName]="i">
+          <mat-error *ngIf="backgroundColor.touched && backgroundColor.invalid">
+            <div *ngIf="backgroundColor.errors.required">
+              Background color is <strong>required</strong>
+            </div>
+            <div *ngIf="backgroundColor.errors.validateColor && !backgroundColor.errors.required">
+              Color inserted is not correct
+            </div>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div formArrayName="borderColors" fxLayout="column">
+        <mat-form-field *ngFor="let borderColor of form.get('borderColors').controls; let j = index;">
+          <input [colorPicker]="borderColor.value" [value]="borderColor.value" (colorPickerChange)="borderColor.setValue($event)" [placeholder]="borderColorsPlaceholder[j]" type="text" matInput [formControlName]="j">
+          <mat-error *ngIf="borderColor.touched && borderColor.invalid">
+            <div *ngIf="borderColor.errors.required">
+              Border color is <strong>required</strong>
+            </div>
+            <div *ngIf="borderColor.errors.validateColor && !borderColor.errors.required">
+              Color inserted is not correct
+            </div>
+          </mat-error>
+        </mat-form-field>
+      </div>  
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions fxLayoutAlign="center">
+  <button class="mat-raised-button" (click)="cancel()">Cancel</button>
+  <button [disabled]="!form.valid" class="mat-raised-button mat-primary" (click)="create()">Create</button>
+</mat-dialog-actions>

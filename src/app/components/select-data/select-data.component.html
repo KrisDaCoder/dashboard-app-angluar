@@ -1,0 +1,29 @@
+<h2 mat-dialog-title fxLayoutAlign="center">Select Data</h2>
+<mat-dialog-content *ngIf="showDataType">
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-select formControlName="dataType" placeholder="Data Type" (selectionChange)="changeOnDataType($event)">
+        <mat-option *ngFor="let dataTp of data" [value]="dataTp.type">{{ dataTp.type }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="dataType.touched && dataType.invalid">
+        <div *ngIf="dataType.errors.required">
+            Data type is <strong>required</strong>
+        </div>
+      </mat-error> 
+    </mat-form-field>
+    <mat-form-field *ngIf="showDataSource">
+      <mat-select formControlName="dataSource" placeholder="Data Source">
+        <mat-option *ngFor="let dataSource of dataSourceArr" [value]="dataSource.title">{{ dataSource.title }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-error *ngIf="dataSource.touched && dataSource.invalid">
+      <div *ngIf="dataSource.errors.required">
+          Data source is <strong>required</strong>
+      </div>
+    </mat-error>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions *ngIf="showDataType" fxLayoutAlign="center">
+  <button class="mat-raised-button" (click)="cancel()">Cancel</button>
+  <button [disabled]="!form.valid" class="mat-raised-button mat-primary" (click)="next()">Next</button>
+</mat-dialog-actions>

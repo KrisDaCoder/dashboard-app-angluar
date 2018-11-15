@@ -1,0 +1,47 @@
+<h2 mat-dialog-title fxLayoutAlign="center">Create Chart</h2>
+<mat-dialog-content>
+  <form [formGroup]="form" fxLayout="column">
+    <mat-form-field>
+      <input type="text" matInput placeholder="Chart title" formControlName="chartTitle">
+      <mat-error *ngIf="chartTitle.touched && chartTitle.invalid">
+        <div *ngIf="chartTitle.errors.required">
+            Chart title is <strong>required</strong>
+        </div>
+      </mat-error> 
+    </mat-form-field>    
+    <mat-form-field>
+      <input type="text" matInput placeholder="Chart label" formControlName="chartLabel">
+      <mat-error *ngIf="chartLabel.touched && chartLabel.invalid">
+        <div *ngIf="chartLabel.errors.required">
+            Chart label is <strong>required</strong>
+        </div>
+      </mat-error> 
+    </mat-form-field>
+    <mat-form-field>
+      <input [colorPicker]="chartBackgroundColor.value" [value]="chartBackgroundColor.value" (colorPickerChange)="chartBackgroundColor.setValue($event)" type="text" matInput placeholder="Background color" formControlName="chartBackgroundColor">
+      <mat-error *ngIf="chartBackgroundColor.touched && chartBackgroundColor.invalid">
+        <div *ngIf="chartBackgroundColor.errors.required">
+          Background color is <strong>required</strong>
+        </div>
+        <div *ngIf="chartBackgroundColor.errors.validateColor && !chartBackgroundColor.errors.required">
+          Color inserted is not correct
+        </div>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input [colorPicker]="chartBorderColor.value" [value]="chartBorderColor.value" (colorPickerChange)="chartBorderColor.setValue($event)" type="text" matInput placeholder="Border color" formControlName="chartBorderColor">
+    </mat-form-field>
+    <mat-error *ngIf="chartBorderColor.touched && chartBorderColor.invalid">
+      <div *ngIf="chartBorderColor.errors.required">
+        Border color is <strong>required</strong>
+      </div>
+      <div *ngIf="chartBorderColor.errors.validateColor && !chartBorderColor.errors.required">
+        Color inserted is not correct
+      </div>
+    </mat-error> 
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions fxLayoutAlign="center">
+  <button class="mat-raised-button" (click)="cancel()">Cancel</button>
+  <button [disabled]="!form.valid" class="mat-raised-button mat-primary" (click)="create()">Create</button>
+</mat-dialog-actions>

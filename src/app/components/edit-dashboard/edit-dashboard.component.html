@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Edit Dashboard</h2>
+<mat-dialog-content [formGroup]="form" *ngIf="showForm">
+  <mat-form-field>
+    <input type="text" matInput placeholder="Dashboard Name" formControlName="dashboardName">
+    <mat-error *ngIf="dashboardName.touched && dashboardName.invalid">
+      <div *ngIf="dashboardName.errors.nameIsTaken">
+          Dashboard name already exists
+      </div>    
+      <div *ngIf="dashboardName.errors.required">
+        Dashboard name is <strong>required</strong>
+      </div>
+    </mat-error> 
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions *ngIf="showForm">
+  <button class="mat-raised-button" (click)="cancel()">Cancel</button>
+  <button [disabled]="dashboardName.invalid" class="mat-raised-button mat-primary" (click)="save()">Save</button>
+</mat-dialog-actions>

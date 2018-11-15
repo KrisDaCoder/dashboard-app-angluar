@@ -1,0 +1,51 @@
+<mat-sidenav-container>
+    <mat-sidenav #sidenav role="navigation">
+      <mat-toolbar color="primary">
+        Charts
+      </mat-toolbar>
+      <mat-nav-list>
+        <div mat-list-item draggable="true" class="nav-list-item" (dragstart)="pieChartDragStartHandler($event)">
+            <i class="fa fa-pie-chart fa-lg" aria-hidden="true"></i>
+            <span class="nav-caption">Pie Chart</span>
+        </div>
+        <div mat-list-item draggable="true" class="nav-list-item" (dragstart)="lineChartDragStartHandler($event)">
+            <i class="fa fa-line-chart fa-lg" aria-hidden="true"></i>
+            <span class="nav-caption">Line Chart</span>
+        </div>
+        <div mat-list-item draggable="true" class="nav-list-item" (dragstart)="barChartDragStartHandler($event)">
+            <i class="fa fa-bar-chart fa-lg" aria-hidden="true"></i>
+            <span class="nav-caption">Bar Chart</span>
+        </div>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <div>
+          <button mat-icon-button (click)="sidenav.toggle()" *ngIf="!noDashboard">
+            <mat-icon>create</mat-icon>
+          </button>
+        </div>
+        <div>
+          <a href="/">DashboardApp</a>
+        </div>
+        <div fxFlex></div>
+        <button mat-icon-button (click)="showAddDashboardDialog()">
+            <mat-icon>add_circle</mat-icon>
+        </button>
+        <button *ngIf="!noDashboard" mat-icon-button (click)="showEditDashboardDialog()">
+            <mat-icon>edit</mat-icon>
+        </button>
+        <button *ngIf="!noDashboard" mat-icon-button color="warn" (click)="deleteDashboard()">
+            <mat-icon>remove_circle</mat-icon>
+        </button>
+        <div *ngIf="!noDashboard">
+          <mat-form-field>
+              <mat-select [(ngModel)]="currentDashboard" (selectionChange)="changeOnSelectDashboard($event)">
+                <mat-option *ngFor="let dashboard of dashboards" [value]="dashboard.id">{{ dashboard.name }}</mat-option>
+              </mat-select>
+          </mat-form-field>
+        </div>
+      </mat-toolbar>
+      <app-dashboard></app-dashboard>
+    </mat-sidenav-content>
+</mat-sidenav-container>

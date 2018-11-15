@@ -1,0 +1,69 @@
+{
+    "data": [
+        {
+            "type": "Football",
+            "data": [
+                {
+                    "title": "Top current goalscorers in Champions League",
+                    "labels": ["Dzeko", "Messi", "Dybala", "Kane", "Lewandowski"],
+                    "data": [5, 5, 4, 4, 4]
+                },
+                {
+                    "title": "Most successful teams in the history of the Champions League, by titles",
+                    "labels": ["Real Madrid", "AC Milan", "Bayern Munich", "Barcelona", "Liverpool"],
+                    "data": [13, 7, 5, 5, 5]
+                },
+                {
+                    "title": "Most successful teams in the history of the Serie A, by titles",
+                    "labels": ["Juventus", "AC Milan", "Internazionale", "Genoa", "Torino", "Pro Vercelli", "Bologna", "Roma", "Napoli"],
+                    "data": [34, 18, 18, 9, 7, 7, 7, 3, 2]
+                },
+                {
+                    "title": "Top all time goalscorers in Serie A",
+                    "labels": ["Piola", "Totti", "Nordahl", "Meazza", "Altafini"],
+                    "data": [274, 250, 225, 216, 216]
+                }
+            ]
+        },
+        {
+            "type": "Sales",
+            "data": [
+                {
+                    "title": "Number of sales per month",
+                    "labels": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+                    "data": [112, 150, 50, 75, 90, 90, 350, 40, 15, 16, 310, 120]
+                },
+                {
+                    "title": "Earnings per month in EUR",
+                    "labels": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+                    "data": [1000, 1500, 300, 500, 700, 700, 2500, 200, 100, 2200, 1100, 800]
+                },
+                {
+                    "title": "Expenses per month",
+                    "labels": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+                    "data": [56, 75, 25, 30, 45, 45, 175, 20, 7, 8, 155, 60]
+                }
+            ]
+        },
+        {
+            "type": "Oscars",
+            "data": [
+                {
+                    "title": "Most awarded male actors of all time",
+                    "labels": ["Jack Nicholson", "Walter Brennan", "Daniel Day Lewis", "Marlon Brando", "Robert De Niro", "Tom Hanks", "Christoph Waltz", "Denzel Washington", "Kevin Spacey", "Sean Penn"],
+                    "data": [3, 3, 3, 2, 2, 2, 2, 2, 2, 2]
+                },
+                {
+                    "title": "Most awarded female actors of all time",
+                    "labels": ["Meryl Streep", "Katharine Hepburn", "Ingrid Bergman", "Cate Blanchett", "Hilary Swank"],
+                    "data": [3, 4, 3, 2, 2]
+                },
+                {
+                    "title": "Most awarded movies of all time",
+                    "labels": ["Titanic", "Ben Hur", "The English Patient", "My Fair Lady", "Gone with the Wnd"],
+                    "data": [11, 11, 9, 8, 8]
+                }
+            ]
+        }
+    ]
+}
